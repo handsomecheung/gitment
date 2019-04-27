@@ -34,12 +34,14 @@ class Gitment {
 
   get loginLink() {
     const oauthUri = 'https://github.com/login/oauth/authorize'
+    const client_id = this.oauth.client_id
     const redirect_uri = this.oauth.redirect_uri || window.location.href
 
-    const oauthParams = Object.assign({
+    const oauthParams = {
       scope,
+      client_id,
       redirect_uri,
-    }, this.oauth)
+    }
 
     return `${oauthUri}${Query.stringify(oauthParams)}`
   }
@@ -86,7 +88,7 @@ class Gitment {
 
     const query = Query.parse()
     if (query.code) {
-      const { client_id, client_secret } = this.oauth
+      const { client_id, client_encoded_secret } = this.oauth
       const code = query.code
       delete query.code
       const search = Query.stringify(query)
@@ -99,10 +101,10 @@ class Gitment {
       }, options)
 
       this.state.user.isLoggingIn = true
-      http.post('https://gh-oauth.imsun.net', {
+      http.post('https://gh-oauth.print4d.org/login/oauth/access_token', {
           code,
           client_id,
-          client_secret,
+          client_encoded_secret,
         }, '')
         .then(data => {
           this.accessToken = data.access_token
