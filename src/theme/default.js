@@ -324,7 +324,7 @@ function renderFooter() {
   container.className = 'gitment-container gitment-footer-container'
   container.innerHTML = `
     Powered by
-    <a class="gitment-footer-project-link" href="https://github.com/imsun/gitment" target="_blank">
+    <a class="gitment-footer-project-link" href="https://github.com/handsomecheung/gitment" target="_blank">
       Gitment
     </a>
   `
