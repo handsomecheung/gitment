@@ -1,5 +1,7 @@
 # Gitment
 
+[中文说明](README.zh_cn.md)
+
 This project is forked from [imsun/gitment](https://github.com/imsun/gitment).
 
 ## Usage
