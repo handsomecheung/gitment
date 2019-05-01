@@ -29,5 +29,7 @@ const gitment = new Gitment({
 获取 `client_encoded_secret`：
 
 ```
-curl -XPOST 'https://gh-oauth.print4d.org/encoded_secret' --data "client_secret=your-client-secret"
+curl -XPOST 'https://gh-oauth.print4d.org/encoded_secret' --data "client_secret=your-client-secret" --data "host=http://yourhost"
 ```
+
+到时会验证请求的 Referer 是否与传递的 `host` 一致。
